@@ -1,0 +1,199 @@
+<div *ngIf="isLoading" class="d-flex justify-content-center align-items-center"
+    style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(0, 0, 0, 0.5);">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<div class="form-container" *ngIf="!isLoading">
+    <h2>Customer Form</h2>
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input id="firstName" class="form-control" type="text" formControlName="firstName" required>
+            <div *ngIf="customerForm.get('firstName')?.invalid && (customerForm.get('firstName')?.dirty || customerForm.get('firstName')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('firstName')?.errors?.required">Please enter your first name.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" class="form-control" type="text" formControlName="lastName" required>
+            <div *ngIf="customerForm.get('lastName')?.invalid && (customerForm.get('lastName')?.dirty || customerForm.get('lastName')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('lastName')?.errors?.required">Please enter your last name.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input id="email" class="form-control" type="email" formControlName="email" required>
+            <div *ngIf="customerForm.get('email')?.invalid && (customerForm.get('email')?.dirty || customerForm.get('email')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('email')?.errors?.required">Email is required.</div>
+            <div *ngIf="customerForm.get('email')?.errors?.email">Please enter a valid email address.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input id="phoneNumber" class="form-control" type="tel" formControlName="phoneNumber" required>
+            <div *ngIf="customerForm.get('phoneNumber')?.invalid && (customerForm.get('phoneNumber')?.dirty || customerForm.get('phoneNumber')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('phoneNumber')?.errors?.required">Please enter your phone number.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="countryCode">Country Code:</label>
+            <input id="countryCode" class="form-control" type="text" formControlName="countryCode" required>
+            <div *ngIf="customerForm.get('countryCode')?.invalid && (customerForm.get('countryCode')?.dirty || customerForm.get('countryCode')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('countryCode')?.errors?.required">Please enter the country code.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" class="form-control" formControlName="gender" required>
+                <option value="m">Male</option>
+                <option value="f">Female</option>
+            </select>
+            <div *ngIf="customerForm.get('gender')?.invalid && (customerForm.get('gender')?.dirty || customerForm.get('gender')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('gender')?.errors?.required">Please select your gender.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="balance">Balance:</label>
+            <input id="balance" class="form-control" type="text" formControlName="balance" pattern="\d*\.?\d*" required>
+            <div *ngIf="customerForm.get('balance')?.invalid && (customerForm.get('balance')?.dirty || customerForm.get('balance')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('balance')?.errors?.required">Please enter your balance.</div>
+        </div>
+        <div class="form-group">
+            <label for="firstNameAscii">First Name ASCII:</label>
+            <input id="firstNameAscii" class="form-control" type="text" formControlName="firstNameAscii" required>
+            <div *ngIf="customerForm.get('firstNameAscii')?.invalid && (customerForm.get('firstNameAscii')?.dirty || customerForm.get('firstNameAscii')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('firstNameAscii')?.errors?.required">Please enter the ASCII representation of
+                your first name.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="lastNameAscii">Last Name ASCII:</label>
+            <input id="lastNameAscii" class="form-control" type="text" formControlName="lastNameAscii" required>
+            <div *ngIf="customerForm.get('lastNameAscii')?.invalid && (customerForm.get('lastNameAscii')?.dirty || customerForm.get('lastNameAscii')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('lastNameAscii')?.errors?.required">Please enter the ASCII representation of
+                your last name.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="initials">Initials:</label>
+            <input id="initials" class="form-control" type="text" formControlName="initials" required>
+            <div *ngIf="customerForm.get('initials')?.invalid && (customerForm.get('initials')?.dirty || customerForm.get('initials')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('initials')?.errors?.required">Please enter your initials.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="countryCodeAlpha">Country Code Alpha:</label>
+            <input id="countryCodeAlpha" class="form-control" type="text" formControlName="countryCodeAlpha" required>
+            <div *ngIf="customerForm.get('countryCodeAlpha')?.invalid && (customerForm.get('countryCodeAlpha')?.dirty || customerForm.get('countryCodeAlpha')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('countryCodeAlpha')?.errors?.required">Please enter the alpha representation of
+                the country code.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="countryName">Country Name:</label>
+            <input id="countryName" class="form-control" type="text" formControlName="countryName" required>
+            <div *ngIf="customerForm.get('countryName')?.invalid && (customerForm.get('countryName')?.dirty || customerForm.get('countryName')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('countryName')?.errors?.required">Please enter the country name.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="currency">Currency:</label>
+            <input id="currency" class="form-control" type="text" formControlName="currency" required>
+            <div *ngIf="customerForm.get('currency')?.invalid && (customerForm.get('currency')?.dirty || customerForm.get('currency')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('currency')?.errors?.required">Please enter the currency.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="firstNameCountryFrequency">First Name Country Frequency:</label>
+            <input id="firstNameCountryFrequency" class="form-control" type="text"
+                formControlName="firstNameCountryFrequency" required>
+            <div *ngIf="customerForm.get('firstNameCountryFrequency')?.invalid && (customerForm.get('firstNameCountryFrequency')?.dirty || customerForm.get('firstNameCountryFrequency')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('firstNameCountryFrequency')?.errors?.required">Please enter the frequency of
+                your first name in the country.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="firstNameCountryRank">First Name Country Rank:</label>
+            <input id="firstNameCountryRank" class="form-control" type="text" formControlName="firstNameCountryRank"
+                required>
+            <div *ngIf="customerForm.get('firstNameCountryRank')?.invalid && (customerForm.get('firstNameCountryRank')?.dirty || customerForm.get('firstNameCountryRank')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('firstNameCountryRank')?.errors?.required">Please enter the rank of your first
+                name in the country.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="lastNameCountryFrequency">Last Name Country Frequency:</label>
+            <input id="lastNameCountryFrequency" class="form-control" type="text"
+                formControlName="lastNameCountryFrequency" required>
+            <div *ngIf="customerForm.get('lastNameCountryFrequency')?.invalid && (customerForm.get('lastNameCountryFrequency')?.dirty || customerForm.get('lastNameCountryFrequency')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('lastNameCountryFrequency')?.errors?.required">Please enter the frequency of
+                your last name in the country.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="lastNameCountryRank">Last Name Country Rank:</label>
+            <input id="lastNameCountryRank" class="form-control" type="text" formControlName="lastNameCountryRank"
+                required>
+            <div *ngIf="customerForm.get('lastNameCountryRank')?.invalid && (customerForm.get('lastNameCountryRank')?.dirty || customerForm.get('lastNameCountryRank')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('lastNameCountryRank')?.errors?.required">Please enter the rank of your last
+                name in the country.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input id="password" class="form-control" type="password" formControlName="password" required>
+            <div *ngIf="customerForm.get('password')?.invalid && (customerForm.get('password')?.dirty || customerForm.get('password')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('password')?.errors?.required">Please enter a password.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="primaryLanguage">Primary Language:</label>
+            <input id="primaryLanguage" class="form-control" type="text" formControlName="primaryLanguage" required>
+            <div *ngIf="customerForm.get('primaryLanguage')?.invalid && (customerForm.get('primaryLanguage')?.dirty || customerForm.get('primaryLanguage')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('primaryLanguage')?.errors?.required">Please enter your primary language.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="primaryLanguageCode">Primary Language Code:</label>
+            <input id="primaryLanguageCode" class="form-control" type="text" formControlName="primaryLanguageCode"
+                required>
+            <div *ngIf="customerForm.get('primaryLanguageCode')?.invalid && (customerForm.get('primaryLanguageCode')?.dirty || customerForm.get('primaryLanguageCode')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('primaryLanguageCode')?.errors?.required">Please enter the code for your
+                primary language.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="salutation">Salutation:</label>
+            <input id="salutation" class="form-control" type="text" formControlName="salutation" required>
+            <div *ngIf="customerForm.get('salutation')?.invalid && (customerForm.get('salutation')?.dirty || customerForm.get('salutation')?.touched)"
+                class="invalid-feedback"></div>
+            <div *ngIf="customerForm.get('salutation')?.errors?.required">Please enter your salutation.</div>
+        </div>
+
+        <button class="btn btn-primary mt-3 mb-3" type="submit" style="width: 100%; font-size: 1.2em;">{{ isEdit ?
+            'Update' : 'Add' }}</button>
+    </form>
+</div>
